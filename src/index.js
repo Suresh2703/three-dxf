@@ -83,7 +83,7 @@ function getBulgeCurvePoints(startPoint, endPoint, bulge, segments) {
  * @param {Object} font - a font loaded with THREE.FontLoader 
  * @constructor
  */
-export function Viewer(data, parent, width, height, font) {
+export function Viewer(data, parent, width, height, font, vp_height, vp_width) {
 
     createLineTypeShaders(data);
 
@@ -189,7 +189,7 @@ export function Viewer(data, parent, width, height, font) {
         //        camera.updateProjectionMatrix();
 
         renderer.setSize(width, height);
-        renderer.setClearColor(0xfffffff, 1);
+        renderer.setClearColor(0x000000, 1);
         this.render();
     };
 
@@ -646,13 +646,13 @@ export function Viewer(data, parent, width, height, font) {
     }
 
     function getColor(entity, data) {
-        var color = 0x000000; //default
+        var color = 0x00ff00; //default
         if (entity.color) color = entity.color;
         else if (data.tables && data.tables.layer && data.tables.layer.layers[entity.layer])
             color = data.tables.layer.layers[entity.layer].color;
 
         if (color == null || color === 0xffffff) {
-            color = 0x000000;
+            color = 0x00ff00;
         }
         return color;
     }
